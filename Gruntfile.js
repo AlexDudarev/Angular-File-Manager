@@ -1,5 +1,8 @@
 module.exports = function(grunt) {
 
+  // Load grunt tasks automatically
+  require('load-grunt-tasks')(grunt);
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
@@ -25,7 +28,7 @@ module.exports = function(grunt) {
       files: ['test/**/*.html']
     },
     jshint: {
-      files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+      files: ['Gruntfile.js', 'app/**/*.js'],//, 'test/**/*.js'
       options: {
         // options here to override JSHint defaults
         globals: {
@@ -36,32 +39,78 @@ module.exports = function(grunt) {
         }
       }
     },
+
+
+    express: {
+      options: {
+        port: process.env.PORT || 3000
+      },
+      dev: {
+        options: {
+          script: 'bin/www',
+          debug: true,
+          'node_env': 'development'
+        }
+      }
+    },
+
+    open: {
+      server: {
+        url: 'http://localhost:<%= express.options.port %>'
+      }
+    },
+
     watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint', 'qunit']
+      js: {
+        files: ['app/public/scripts/**/*.js'],
+        options: {
+          livereload: true
+        }
+      },
+      gruntfile: {
+        files: ['Gruntfile.js']
+      },
+      express: {
+        files: [
+          'app.js'
+        ],
+        tasks: ['express:dev', 'wait'],
+        options: {
+          livereload: true,
+          nospawn: true //Without this option specified express won't be reloaded
+        }
+      }
     },
     includeSource: {
       options: {
-        basePath: '',
-        baseUrl: 'app/public'
+        basePath: 'app/'
       },
       myTarget: {
         files: {
-          'dist/index.html': 'app/index.tpl.html'
+          'app/index.html': 'template/index.tpl.html'
         }
       }
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-include-source');
-
   grunt.registerTask('test', ['jshint', 'qunit']);
 
-  grunt.registerTask('default', ['includeSource']);//, 'jshint', 'qunit', 'concat', 'uglify']);
+  // Used for delaying livereload until after server has restarted
+  grunt.registerTask('wait', function () {
+    grunt.log.ok('Waiting for server reload...');
+
+    var done = this.async();
+
+    setTimeout(function () {
+      grunt.log.writeln('Done waiting!');
+      done();
+    }, 500);
+  });
+
+  grunt.registerTask('express-keepalive', 'Keep grunt running', function() {
+    this.async();
+  });
+
+  grunt.registerTask('default', ['includeSource', 'jshint', 'express:dev', 'open', 'watch']);//,  'qunit', 'concat', 'uglify']);
 
 };
