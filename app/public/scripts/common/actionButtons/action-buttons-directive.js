@@ -1,6 +1,6 @@
 'use strict';
 
-angular('common').directive('actionButtons', ['$state', function ($state) {
+angular.module('common').directive('actionButtons', ['$state', function ($state) {
   return {
     restrict: 'E',
     templateUrl: 'public/scripts/common/actionButtons/action-buttons.html',

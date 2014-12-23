@@ -1,6 +1,6 @@
 'use strict';
 
-angular('common').factory('FilesService', ['$q', 'StorageService', function ($q, LocalStorageService) {
+angular.module('common').factory('FilesService', ['$q', 'StorageService', function ($q, LocalStorageService) {
 
   // initially list of files empty
   var files = [];

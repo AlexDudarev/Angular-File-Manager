@@ -1,6 +1,6 @@
 'use strict';
 
-angular('main').controller('MainController', ['$scope', 'FilesService', function ($scope, FilesService) {
+angular.module('main').controller('MainController', ['$scope', 'FilesService', function ($scope, FilesService) {
 
   $scope.files = [];
 

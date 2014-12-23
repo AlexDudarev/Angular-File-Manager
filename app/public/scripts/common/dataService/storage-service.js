@@ -1,6 +1,6 @@
 'use strict';
 
-angular('common').factory('StorageService', ['_', '$q', 'LocalStorageService', function(_, $q, LocalStorageService){
+angular.module('common').factory('StorageService', ['_', '$q', 'LocalStorageService', function(_, $q, LocalStorageService){
 
   var dataKey = 'files';
 
