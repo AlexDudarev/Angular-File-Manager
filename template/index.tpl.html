@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html  ng-app="fileManager">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -11,47 +11,15 @@
   <!-- endbower -->
   <!-- bower:js -->
   <!-- endbower -->
+  <!-- include: "type": "less", "files": "public/styles/**/*.less" -->
 </head>
 <body>
 
 <h1>Start App</h1>
 
-<div class="container">
-  <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-      <tr>
-        <th>File Name</th>
-        <th>File Type</th>
-        <th>Size(kb)</th>
-        <th>Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<div ui-view></div>
 
-<!-- include: "type": "js", "files": "public/scripts/*.js" -->
+<!-- include: "type": "js", "files": "public/scripts/**/*.js" -->
 
 </body>
 </html>
