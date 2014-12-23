@@ -6,6 +6,7 @@ angular.module('lodash', []);
 
 angular.module('fileManager', [
   'ui.router',
+  'LocalStorageModule',
   'ngAnimate',
   'main'
 ])
