@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       files: ['test/**/*.html']
     },
     jshint: {
-      files: ['Gruntfile.js', 'app/**/*.js'],//, 'test/**/*.js'
+      files: ['Gruntfile.js', 'app/public/**/*.js'],//, 'test/**/*.js'
       options: {
         // options here to override JSHint defaults
         globals: {
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
       },
       express: {
         files: [
-          'app.js'
+          'bin/www'
         ],
         tasks: ['express:dev', 'wait'],
         options: {
@@ -89,6 +89,14 @@ module.exports = function(grunt) {
         files: {
           'app/index.html': 'template/index.tpl.html'
         }
+      }
+    },
+    wiredep: {
+      task: {
+
+        // Point to the files that should be updated when
+        // you run `grunt wiredep`
+        src: ['app/index.html']
       }
     }
   });
@@ -111,6 +119,6 @@ module.exports = function(grunt) {
     this.async();
   });
 
-  grunt.registerTask('default', ['includeSource', 'jshint', 'express:dev', 'open', 'watch']);//,  'qunit', 'concat', 'uglify']);
+  grunt.registerTask('default', ['includeSource', 'wiredep', 'jshint', 'express:dev', 'express-keepalive']);//,  'qunit', 'concat', 'uglify']);
 
 };
