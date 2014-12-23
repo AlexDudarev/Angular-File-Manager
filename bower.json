@@ -19,6 +19,9 @@
   ],
   "dependencies": {
     "angular-strap": "~2.1.4",
-    "angular-ui-router": "~0.2.13"
+    "angular-ui-router": "~0.2.13",
+    "angular-local-storage": "~0.1.5",
+    "lodash": "~2.4.1",
+    "jshint-stylish": "~1.0.0"
   }
 }

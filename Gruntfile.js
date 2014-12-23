@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(grunt) {
 
   // Load grunt tasks automatically
@@ -27,16 +29,13 @@ module.exports = function(grunt) {
     qunit: {
       files: ['test/**/*.html']
     },
+    // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
-      files: ['Gruntfile.js', 'app/public/**/*.js'],//, 'test/**/*.js'
-      options: {
-        // options here to override JSHint defaults
-        globals: {
-          jQuery: true,
-          console: true,
-          module: true,
-          document: true
-        }
+      all: {
+        options: {
+          jshintrc: '.jshintrc'
+        },
+        src: ['app/public/scripts/**/*.js']
       }
     },
 
@@ -142,6 +141,8 @@ module.exports = function(grunt) {
     this.async();
   });
 
-  grunt.registerTask('default', ['includeSource', 'wiredep', 'jshint', 'express:dev', 'express-keepalive']);//,  'qunit', 'concat', 'uglify']);
+  grunt.registerTask('build', ['includeSource', 'wiredep']);
+
+  grunt.registerTask('default', ['build', 'jshint', 'express:dev', 'express-keepalive']);//,  'qunit', 'concat', 'uglify']);
 
 };

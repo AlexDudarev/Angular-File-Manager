@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-8 table-responsive">
-      <table class="table table-bordered">
+    <div class="col-lg-8 main-table table-responsive">
+      <table class="table table-condensed">
         <thead>
         <tr>
           <th>File Name</th>
@@ -10,21 +10,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
+        <tr ng-repeat="file in files">
+          <th>{{ file.name }}</th>
+          <td>{{ fileTypes[file.extension] }}</td>
+          <td>{{ file.size }}</td>
         </tr>
         </tbody>
       </table>
     </div>
-    <div class="col-lg-4">
-      <my-actions></my-actions>
+    <div class="col-lg-4 main-table-actions">
+      <actions></actions>
     </div>
   </div>
   <action-buttons></action-buttons>
