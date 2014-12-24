@@ -1,9 +1,11 @@
 'use strict';
 
-angular.module('main').controller('MainController', ['$scope', '_', 'FilesService',
-  function ($scope, _, FilesService) {
+angular.module('main').controller('BookmarksController', ['$scope', '_', 'BookmarksService',
+  function ($scope, _, BookmarksService) {
 
   $scope.files = [];
+
+  $scope.selectedFile = null;
 
   // select file
   $scope.selectItem = function (file) {
@@ -17,7 +19,7 @@ angular.module('main').controller('MainController', ['$scope', '_', 'FilesServic
   };
 
   (function init() {
-    FilesService.loadFileList().then(function (list) {
+    BookmarksService.loadBookmarksList().then(function (list) {
       $scope.files = list;
     });
   })();

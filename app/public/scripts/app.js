@@ -15,6 +15,12 @@ angular.module('fileManager', [
     function ($rootScope, $state, $stateParams) {
       $rootScope.$state = $state;
       $rootScope.$stateParams = $stateParams;
+
+      //$rootScope.fileTypes = {
+      //  'html': 'Web Page',
+      //  'txt': 'TXT file',
+      //  'png': 'PNG file'
+      //};
     }
   ]
 )
@@ -30,7 +36,15 @@ angular.module('fileManager', [
         .state('home', {
           // Use a url of "/" to set a states as the "index".
           url: '/',
-          templateUrl: 'public/scripts/main/main.html'
+          templateUrl: 'public/scripts/main/main.html',
+          controller: 'MainController'
+        })
+
+        .state('bookmarks', {
+          // Use a url of "/" to set a states as the "index".
+          url: '/bookmarks',
+          templateUrl: 'public/scripts/main/main.html',
+          controller: 'BookmarksController'
         })
 
         .state('upload', {

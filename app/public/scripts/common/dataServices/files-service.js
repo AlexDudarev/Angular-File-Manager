@@ -31,7 +31,7 @@ angular.module('common').factory('FilesService', ['$q', 'StorageService', functi
    */
   function loadFileList(filter, reload) {
     if (!files.length || reload) {
-      return StorageService.loadFiles(filter).then(function (collection) {
+      return StorageService.loadItems(filter, true).then(function (collection) {
         files = collection;
         return angular.copy(processFiles(files));
       });

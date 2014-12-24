@@ -1,4 +1,4 @@
-<div class="container" ng-controller="MainController">
+<div class="container">
   <div class="row">
     <div class="col-lg-8 main-table table-responsive">
       <table class="table table-condensed">
@@ -10,7 +10,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="file in files">
+        <tr ng-repeat="file in files" ng-click="selectItem(file)" ng-class="{'active': file.selected}">
           <th>{{ file.name }}</th>
           <td>{{ fileTypes[file.extension] }}</td>
           <td>{{ file.size }}</td>
