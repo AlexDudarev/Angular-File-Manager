@@ -22,8 +22,21 @@ angular.module('common').factory('BookmarksService', ['$q', 'StorageService', fu
     }
   }
 
+  /**
+   * add file to bookmarks
+   * @param{object} file - file to add
+   */
+  function addBookmark(file) {
+    return loadBookmarksList().then(function (){
+      bookmarks.push(angular.copy(file));
+      StorageService.saveFiles(bookmarks, false);
+    });
+
+  }
+
   return {
-    loadBookmarksList: loadBookmarksList
+    loadBookmarksList: loadBookmarksList,
+    addBookmark: addBookmark
   };
 
 }]);

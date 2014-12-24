@@ -21,6 +21,12 @@ angular.module('fileManager', [
         'txt': 'TXT file',
         'png': 'PNG file'
       };
+
+      $rootScope.actionFileTypes = {
+        image: ['png', 'jpeg'],
+        webPage: ['html', 'htm'],
+        text: ['txt']
+      };
     }
   ]
 )

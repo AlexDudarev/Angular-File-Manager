@@ -1,0 +1,45 @@
+<!doctype html>
+<html  ng-app="fileManager">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Index</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.css" />
+  <!-- endbower -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+  <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+  <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+  <!-- endbower -->
+  <link rel="stylesheet" href="public/styles/style.css">
+</head>
+<body>
+
+<h1>File Manager</h1>
+
+<div ui-view></div>
+
+<script src="public/scripts/app.js"></script>
+<script src="public/scripts/common/actionButtons/action-buttons-directive.js"></script>
+<script src="public/scripts/common/dataServices/bookmarks-service.js"></script>
+<script src="public/scripts/common/dataServices/files-service.js"></script>
+<script src="public/scripts/common/dataServices/storage-service.js"></script>
+<script src="public/scripts/common/navigation/navigation-service.js"></script>
+<script src="public/scripts/main/actions/actions-directive.js"></script>
+<script src="public/scripts/main/bookmarks-controller.js"></script>
+<script src="public/scripts/main/main-controller.js"></script>
+<script src="public/scripts/vendor/lodash.js"></script>
+
+</body>
+</html>

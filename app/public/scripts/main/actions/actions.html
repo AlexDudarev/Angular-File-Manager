@@ -6,25 +6,28 @@
   </thead>
 </table>
 
-<div class="col-sm-11 col-sm-offset-1" ng-show="selectedFile">
+<div class="col-lg-11 col-sm-offset-1" ng-show="selectedFile">
   <div class="row action-link" ng-click="downloadFile()">
-    <span class="glyphicon glyphicon-circle-arrow-down"></span> <span>Download</span>
+    <span class="glyphicon glyphicon-circle-arrow-down"></span> <span class="action-text">Download</span>
   </div>
-  <div class="row action-link" ng-click="navigateToPreview()">
-    <span class="glyphicon glyphicon-eye-open"></span> <span>Preview</span>
+  <div class="row action-link"
+       ng-show="actionFileTypes.image.indexOf(selectedFile.extension) > -1 || actionFileTypes.webPage.indexOf(selectedFile.extension) > -1"
+       ng-click="navigateToPreview()">
+    <span class="glyphicon glyphicon-eye-open"></span> <span class="action-text">Preview</span>
   </div>
   <div class="row action-link" ng-click="saveToBookmarks()">
-    <span class="glyphicon glyphicon-bookmark"></span> <span>Bookmark</span>
+    <span class="glyphicon glyphicon-bookmark"></span> <span class="action-text">Bookmark</span>
   </div>
-  <div class="row action-link" ng-click="navigateToEdit()">
-    <span class="glyphicon glyphicon-pencil"></span> <span>Edit</span>
+  <div class="row action-link" ng-click="navigateToEdit()"
+       ng-show="actionFileTypes.text.indexOf(selectedFile.extension) > -1 || actionFileTypes.webPage.indexOf(selectedFile.extension) > -1">
+    <span class="glyphicon glyphicon-pencil"></span> <span class="action-text">Edit</span>
   </div>
   <div class="row selected-file-name">
     <label>File selected: </label> {{selectedFile.name}}
   </div>
 </div>
 
-<div class="col-sm-11 col-sm-offset-1" ng-show="!selectedFile">
+<div class="col-lg-11 col-lg-offset-1" ng-show="!selectedFile">
   <div class="row">
     <label>Select file at the left side by clicking on it</label>
   </div>

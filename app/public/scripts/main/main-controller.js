@@ -3,23 +3,31 @@
 angular.module('main').controller('MainController', ['$scope', '_', 'FilesService',
   function ($scope, _, FilesService) {
 
-  $scope.files = [];
+    $scope.files = [];
 
-  // select file
-  $scope.selectItem = function (file) {
-    _.forEach($scope.files, function (item) {
-      item.selected = false;
-    });
+    $scope.needActions = true;
 
-    file.selected = !file.selected;
+    $scope.search = {
+      filter: ''
+    };
 
-    $scope.selectedFile = file;
-  };
+    $scope.orderByName = false;
 
-  (function init() {
-    FilesService.loadFileList().then(function (list) {
-      $scope.files = list;
-    });
-  })();
+    // select file
+    $scope.selectItem = function (file) {
+      _.forEach($scope.files, function (item) {
+        item.selected = false;
+      });
 
-}]);
+      file.selected = !file.selected;
+
+      $scope.selectedFile = file;
+    };
+
+    (function init() {
+      FilesService.loadFileList().then(function (list) {
+        $scope.files = list;
+      });
+    })();
+
+  }]);

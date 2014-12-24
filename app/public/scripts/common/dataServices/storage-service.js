@@ -12,7 +12,7 @@ angular.module('common').factory('StorageService', ['_', '$q', 'localStorageServ
    * @return $q promise
    */
   function loadItems(isLoadFiles) {
-    var files = JSON.parse(localStorageService.get(isLoadFiles ? dataKey : bookmarksKey));
+    var files = localStorageService.get(isLoadFiles ? dataKey : bookmarksKey);
     files = _.filter(files, function () {
       return true;
     });
@@ -26,7 +26,7 @@ angular.module('common').factory('StorageService', ['_', '$q', 'localStorageServ
    * @return $q promise
    */
   function saveItems(items, isSaveFiles) {
-    var data = JSON.parse(items);
+    var data = JSON.stringify(items);
     localStorageService.set(isSaveFiles ? dataKey : bookmarksKey, data);
     return $q.when(data);
   }

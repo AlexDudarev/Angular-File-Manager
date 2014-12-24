@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('main').directive('actions', function () {
+angular.module('main').directive('actions',[ 'BookmarksService', function (BookmarksService) {
   return {
     restrict: 'E',
     templateUrl: 'public/scripts/main/actions/actions.html',
     link: function(scope) {
+
       scope.downloadFile = function () {
 
       };
@@ -14,7 +15,11 @@ angular.module('main').directive('actions', function () {
       };
 
       scope.saveToBookmarks = function () {
+        var file = angular.copy(scope.selectedFile);
+        delete file.selected;
+        BookmarksService.addBookmark(file).then(function () {
 
+        });
       };
 
       scope.navigateToEdit = function () {
@@ -22,4 +27,4 @@ angular.module('main').directive('actions', function () {
       };
     }
   };
-});
+}]);

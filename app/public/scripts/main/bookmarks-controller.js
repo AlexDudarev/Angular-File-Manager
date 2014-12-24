@@ -3,25 +3,31 @@
 angular.module('main').controller('BookmarksController', ['$scope', '_', 'BookmarksService',
   function ($scope, _, BookmarksService) {
 
-  $scope.files = [];
+    $scope.files = [];
 
-  $scope.selectedFile = null;
+    $scope.selectedFile = null;
 
-  // select file
-  $scope.selectItem = function (file) {
-    _.forEach($scope.files, function (item) {
-      item.selected = false;
-    });
+    $scope.search = {
+      filter: ''
+    };
 
-    file.selected = !file.selected;
+    $scope.orderByName = false;
 
-    $scope.selectedFile = file;
-  };
+    // select file
+    $scope.selectItem = function (file) {
+      _.forEach($scope.files, function (item) {
+        item.selected = false;
+      });
 
-  (function init() {
-    BookmarksService.loadBookmarksList().then(function (list) {
-      $scope.files = list;
-    });
-  })();
+      file.selected = !file.selected;
 
-}]);
+      $scope.selectedFile = file;
+    };
+
+    (function init() {
+      BookmarksService.loadBookmarksList().then(function (list) {
+        $scope.files = list;
+      });
+    })();
+
+  }]);
