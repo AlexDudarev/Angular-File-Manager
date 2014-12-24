@@ -65,6 +65,10 @@ h1 {
     text-decoration: underline;
 }
 
+.search {
+    width: 100%;
+}
+
 /* transition animation*/
 [ui-view].ng-enter {
     position: absolute;

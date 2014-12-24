@@ -37,6 +37,7 @@ angular.module('main').controller('MainController', ['$scope', '_', 'FilesServic
     // clear selection when click outside the table
     $scope.clearSelection = function () {
       clearFilesSelection();
+      $scope.selectedFile = null;
       $scope.$apply();
     };
 
