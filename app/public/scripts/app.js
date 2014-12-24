@@ -16,11 +16,11 @@ angular.module('fileManager', [
       $rootScope.$state = $state;
       $rootScope.$stateParams = $stateParams;
 
-      //$rootScope.fileTypes = {
-      //  'html': 'Web Page',
-      //  'txt': 'TXT file',
-      //  'png': 'PNG file'
-      //};
+      $rootScope.fileTypes = {
+        'html': 'Web Page',
+        'txt': 'TXT file',
+        'png': 'PNG file'
+      };
     }
   ]
 )

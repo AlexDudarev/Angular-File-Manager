@@ -10,6 +10,36 @@ angular.module('common').factory('FilesService', ['$q', 'StorageService', functi
     }, {
       name: 'second.txt',
       size: '40000'
+    },{
+      name: 'third.html',
+      size: '50000'
+    }, {
+      name: 'forth.txt',
+      size: '40000'
+    },{
+      name: 'fifth.html',
+      size: '50000'
+    }, {
+      name: 'sixth.txt',
+      size: '40000'
+    },{
+      name: 'seventh.html',
+      size: '50000'
+    }, {
+      name: 'eighth.txt',
+      size: '40000'
+    },{
+      name: 'ninth.html',
+      size: '50000'
+    }, {
+      name: 'tenth.txt',
+      size: '40000'
+    },{
+      name: 'eleventh.html',
+      size: '50000'
+    }, {
+      name: 'last.txt',
+      size: '40000'
     }
 
   ];

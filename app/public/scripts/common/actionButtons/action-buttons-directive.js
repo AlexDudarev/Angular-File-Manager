@@ -1,24 +1,24 @@
 'use strict';
 
-angular.module('common').directive('actionButtons', ['$state', function ($state) {
+angular.module('common').directive('actionButtons', ['NavigationService', function (NavigationService) {
   return {
     restrict: 'E',
     templateUrl: 'public/scripts/common/actionButtons/action-buttons.html',
     link: function (scope) {
       scope.navigateToFileList = function () {
-        $state.go('home');
+        NavigationService.navigateToFileList();
       };
 
       scope.navigateToBookmarks = function () {
-        $state.go('bookmarks');
+        NavigationService.navigateToBookmarks();
       };
 
       scope.navigateToUpload = function () {
-        $state.go('upload');
+        NavigationService.navigateToUpload();
       };
 
       scope.navigateToCreateNew = function () {
-        $state.go('createNew');
+        NavigationService.navigateToCreateNew();
       };
     }
   };
