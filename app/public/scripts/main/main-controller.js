@@ -8,7 +8,8 @@ angular.module('main').controller('MainController', ['$scope', '_', 'FilesServic
     $scope.needActions = true;
 
     $scope.search = {
-      filter: ''
+      filter: '',
+      regExp: new RegExp('')
     };
 
     $scope.orderByName = false;
@@ -37,6 +38,15 @@ angular.module('main').controller('MainController', ['$scope', '_', 'FilesServic
     $scope.clearSelection = function () {
       clearFilesSelection();
       $scope.$apply();
+    };
+
+    $scope.filterByName = function (item) {
+      return $scope.search.regExp.test(item.name);
+    };
+
+    $scope.createRegex = function () {
+      var text = $scope.search.filter.replace('.','\.');
+      $scope.search.regExp = new RegExp(text.replace('*', '(.*)'));
     };
 
     (function init() {

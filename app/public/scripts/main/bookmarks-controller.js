@@ -8,7 +8,8 @@ angular.module('main').controller('BookmarksController', ['$scope', '_', 'Bookma
     $scope.selectedFile = null;
 
     $scope.search = {
-      filter: ''
+      filter: '',
+      regExp: new RegExp('')
     };
 
     $scope.orderByName = false;
@@ -40,6 +41,14 @@ angular.module('main').controller('BookmarksController', ['$scope', '_', 'Bookma
       $scope.$apply();
     };
 
+    $scope.filterByName = function (item) {
+      return $scope.search.regExp.test(item.name);
+    };
+
+    $scope.createRegex = function () {
+      var text = $scope.search.filter.replace('.','\.');
+      $scope.search.regExp = new RegExp(text.replace('*', '(.*)'));
+    };
 
     (function init() {
       BookmarksService.loadBookmarksList().then(function (list) {

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8">
-      <input type="text" ng-model="search.filter" placeholder="search file">
+      <input type="text" ng-model="search.filter" placeholder="search file" ng-change="createRegex()">
     </div>
   </div>
   <div class="row" click-outside="clearSelection()">
@@ -20,7 +20,7 @@
       <div class="main-table main-table-body table-responsive">
         <table class="table table-condensed">
           <tbody class="files-list">
-          <tr ng-repeat="file in files | filter: { name : search.filter } | orderBy:'name':orderByName"
+          <tr ng-repeat="file in files | filter: filterByName | orderBy:'name':orderByName"
               ng-click="selectItem(file)" ng-class="{'active': file.selected}">
             <th class="col-file-name">{{ file.name }}</th>
             <td class="col-file-type">{{ fileTypes[file.extension] }}</td>
