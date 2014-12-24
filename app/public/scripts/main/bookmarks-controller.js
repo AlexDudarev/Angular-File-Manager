@@ -13,16 +13,33 @@ angular.module('main').controller('BookmarksController', ['$scope', '_', 'Bookma
 
     $scope.orderByName = false;
 
-    // select file
-    $scope.selectItem = function (file) {
+    //*********** HELPERS ***********
+
+    //clear selection of files
+    function clearFilesSelection (){
       _.forEach($scope.files, function (item) {
         item.selected = false;
       });
+    }
+    //*******************************
 
-      file.selected = !file.selected;
+    // select file
+    $scope.selectItem = function (file) {
+      var selectedValue = file.selected;
+
+      clearFilesSelection();
+
+      file.selected = !selectedValue;
 
       $scope.selectedFile = file;
     };
+
+    // clear selection when click outside the table
+    $scope.clearSelection = function () {
+      clearFilesSelection();
+      $scope.$apply();
+    };
+
 
     (function init() {
       BookmarksService.loadBookmarksList().then(function (list) {

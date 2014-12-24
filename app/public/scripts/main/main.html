@@ -4,7 +4,7 @@
       <input type="text" ng-model="search.filter" placeholder="search file">
     </div>
   </div>
-  <div class="row">
+  <div class="row" click-outside="clearSelection()">
     <div class="col-lg-8 main-table main-table-header">
       <table class="table table-condensed">
         <thead>
@@ -20,7 +20,7 @@
       <div class="main-table main-table-body table-responsive">
         <table class="table table-condensed">
           <tbody class="files-list">
-          <tr ng-repeat="file in files | filter: { name : search.filter } | orderBy:'name':orderByName track by file.name  "
+          <tr ng-repeat="file in files | filter: { name : search.filter } | orderBy:'name':orderByName"
               ng-click="selectItem(file)" ng-class="{'active': file.selected}">
             <th class="col-file-name">{{ file.name }}</th>
             <td class="col-file-type">{{ fileTypes[file.extension] }}</td>
